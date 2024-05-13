@@ -1,0 +1,11 @@
+lib: [
+  "_build/install/default/lib/luxe/META"
+  "_build/install/default/lib/luxe/dune-package"
+  "_build/install/default/lib/luxe/opam"
+]
+bin: [
+  "_build/install/default/bin/luxe"
+]
+doc: [
+  "_build/install/default/doc/luxe/README.md"
+]

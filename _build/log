@@ -1,6 +1,18 @@
-# dune init project luxe
+# dune exec luxe
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /home/user/.cache/dune/db
 # Workspace root: /home/user/personal/ocaml/luxe
 # Auto-detected concurrency: 16
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/user/.opam/5.1.0~rc1/bin/ocamlc.opt -config > /tmp/dune_1de2cf_output
+$ (cd _build/default && /home/user/.opam/5.1.0~rc1/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I /home/user/.opam/5.1.0~rc1/lib/angstrom -I /home/user/.opam/5.1.0~rc1/lib/bigstringaf -I /home/user/.opam/5.1.0~rc1/lib/iomux -I /home/user/.opam/5.1.0~rc1/lib/minttea -I /home/user/.opam/5.1.0~rc1/lib/ocaml/unix -I /home/user/.opam/5.1.0~rc1/lib/ptime -I /home/user/.opam/5.1.0~rc1/lib/ptime/clock/os -I /home/user/.opam/5.1.0~rc1/lib/riot -I /home/user/.opam/5.1.0~rc1/lib/riot/core -I /home/user/.opam/5.1.0~rc1/lib/riot/lib -I /home/user/.opam/5.1.0~rc1/lib/riot/lib/logger -I /home/user/.opam/5.1.0~rc1/lib/riot/lib/net -I /home/user/.opam/5.1.0~rc1/lib/riot/log -I /home/user/.opam/5.1.0~rc1/lib/riot/net -I /home/user/.opam/5.1.0~rc1/lib/riot/runtime -I /home/user/.opam/5.1.0~rc1/lib/riot/runtime/time -I /home/user/.opam/5.1.0~rc1/lib/riot/scheduler -I /home/user/.opam/5.1.0~rc1/lib/riot/util -I /home/user/.opam/5.1.0~rc1/lib/stringext -I /home/user/.opam/5.1.0~rc1/lib/telemetry -I /home/user/.opam/5.1.0~rc1/lib/tty -I /home/user/.opam/5.1.0~rc1/lib/uri -I /home/user/.opam/5.1.0~rc1/lib/uutf -I lib/.luxe.objs/byte -I lib/.luxe.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/user/.opam/5.1.0~rc1/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/luxe.cmxa /home/user/.opam/5.1.0~rc1/lib/ptime/ptime.cmxa /home/user/.opam/5.1.0~rc1/lib/ptime/clock/os/ptime_clock.cmxa -I /home/user/.opam/5.1.0~rc1/lib/ptime/clock/os /home/user/.opam/5.1.0~rc1/lib/riot/log/log.cmxa /home/user/.opam/5.1.0~rc1/lib/ocaml/unix/unix.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/util/util.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/core/core.cmxa /home/user/.opam/5.1.0~rc1/lib/iomux/iomux.cmxa -I /home/user/.opam/5.1.0~rc1/lib/iomux /home/user/.opam/5.1.0~rc1/lib/stringext/stringext.cmxa /home/user/.opam/5.1.0~rc1/lib/bigstringaf/bigstringaf.cmxa -I /home/user/.opam/5.1.0~rc1/lib/bigstringaf /home/user/.opam/5.1.0~rc1/lib/angstrom/angstrom.cmxa /home/user/.opam/5.1.0~rc1/lib/uri/uri.cmxa /home/user/.opam/5.1.0~rc1/lib/telemetry/telemetry.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/net/net.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/runtime/time/time.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/scheduler/scheduler.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/runtime/runtime.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/lib/logger/logger.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/lib/net/lib_net.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/lib/lib.cmxa /home/user/.opam/5.1.0~rc1/lib/riot/riot.cmxa /home/user/.opam/5.1.0~rc1/lib/uutf/uutf.cmxa /home/user/.opam/5.1.0~rc1/lib/tty/tty.cmxa /home/user/.opam/5.1.0~rc1/lib/minttea/minttea.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
