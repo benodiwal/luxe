@@ -1,0 +1,6 @@
+# dune init project luxe
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/user/.cache/dune/db
+# Workspace root: /home/user/personal/ocaml/luxe
+# Auto-detected concurrency: 16
