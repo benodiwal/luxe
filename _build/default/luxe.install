@@ -1,7 +1,25 @@
 lib: [
   "_build/install/default/lib/luxe/META"
   "_build/install/default/lib/luxe/dune-package"
+  "_build/install/default/lib/luxe/emoji.ml"
+  "_build/install/default/lib/luxe/luxe.a"
+  "_build/install/default/lib/luxe/luxe.cma"
+  "_build/install/default/lib/luxe/luxe.cmi"
+  "_build/install/default/lib/luxe/luxe.cmt"
+  "_build/install/default/lib/luxe/luxe.cmx"
+  "_build/install/default/lib/luxe/luxe.cmxa"
+  "_build/install/default/lib/luxe/luxe.ml"
+  "_build/install/default/lib/luxe/luxe__Emoji.cmi"
+  "_build/install/default/lib/luxe/luxe__Emoji.cmt"
+  "_build/install/default/lib/luxe/luxe__Emoji.cmx"
+  "_build/install/default/lib/luxe/luxe__Start.cmi"
+  "_build/install/default/lib/luxe/luxe__Start.cmt"
+  "_build/install/default/lib/luxe/luxe__Start.cmx"
   "_build/install/default/lib/luxe/opam"
+  "_build/install/default/lib/luxe/start.ml"
+]
+libexec: [
+  "_build/install/default/lib/luxe/luxe.cmxs"
 ]
 bin: [
   "_build/install/default/bin/luxe"

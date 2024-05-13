@@ -1,0 +1,6 @@
+description = ""
+requires = "leaves minttea"
+archive(byte) = "luxe.cma"
+archive(native) = "luxe.cmxa"
+plugin(byte) = "luxe.cma"
+plugin(native) = "luxe.cmxs"

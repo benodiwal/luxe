@@ -1,2 +1,4 @@
 (library
- (name luxe))
+ (name luxe)
+ (public_name luxe)
+ (libraries minttea leaves))

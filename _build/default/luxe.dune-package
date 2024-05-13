@@ -1,4 +1,54 @@
 (lang dune 3.15)
 (name luxe)
-(sections (lib .) (bin ../../bin) (doc ../../doc/luxe))
-(files (lib (META dune-package opam)) (bin (luxe)) (doc (README.md)))
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/luxe))
+(files
+ (lib
+  (META
+   dune-package
+   emoji.ml
+   luxe.a
+   luxe.cma
+   luxe.cmi
+   luxe.cmt
+   luxe.cmx
+   luxe.cmxa
+   luxe.ml
+   luxe__Emoji.cmi
+   luxe__Emoji.cmt
+   luxe__Emoji.cmx
+   luxe__Start.cmi
+   luxe__Start.cmt
+   luxe__Start.cmx
+   opam
+   start.ml))
+ (libexec (luxe.cmxs))
+ (bin (luxe))
+ (doc (README.md)))
+(library
+ (name luxe)
+ (kind normal)
+ (archives (byte luxe.cma) (native luxe.cmxa))
+ (plugins (byte luxe.cma) (native luxe.cmxs))
+ (native_archives luxe.a)
+ (requires minttea leaves)
+ (main_module_name Luxe)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name luxe)
+     (visibility public)
+     (kind alias)
+     (source (path Luxe) (impl (path luxe.ml-gen))))
+    (name Luxe)
+    (modules
+     (module
+      (obj_name luxe__Emoji)
+      (visibility public)
+      (source (path Emoji) (impl (path emoji.ml))))
+     (module
+      (obj_name luxe__Start)
+      (visibility public)
+      (source (path Start) (impl (path start.ml))))))
+   (wrapped true))))

@@ -1,4 +1,4 @@
 (executable
  (public_name luxe)
  (name main)
- (libraries luxe minttea))
+ (libraries luxe))

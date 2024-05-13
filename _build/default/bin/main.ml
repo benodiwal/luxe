@@ -1,9 +1,9 @@
+open Luxe.Start
+
 type command = 
   | Help of string
   | Version
   | Start
-
-let printMsg str = print_endline str
 
 let parseArgs () =
   match Array.length Sys.argv with
@@ -17,10 +17,10 @@ let parseArgs () =
   )
   | _ -> Help "Invalid number of arguments !!"
 
+(* Version *)
 let printVersion () = print_endline "0.0.1"
 
-let start () = print_endline "start"
-
+(* Help *)
 let printHelpMsg () =
   print_endline {|
   Usage:
@@ -35,6 +35,8 @@ let printHelpMsg () =
   -h, --help   Alternate command to display help message
   |}
 
+let printMsg str = print_endline str
+
 let help msg =
   printMsg msg;
   printHelpMsg ()
@@ -43,8 +45,7 @@ let action command =
   match command with
   | Help s -> help s
   | Version -> printVersion ()
-  | Start -> start ()
-
+  | Start -> Start.start ()
 
 let () =
    parseArgs () |> action
