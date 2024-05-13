@@ -20,8 +20,6 @@ let printWelcomeMessage () =
   To get started, log in with your Google account using OAuth:
   |} *)
 
-open Emoji
-
 module Start = struct
-  let start () = emoji ()
+  let start () = Auth.start ()
 end

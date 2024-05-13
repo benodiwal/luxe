@@ -1,1 +1,1 @@
-lib/start.ml: Emoji
+lib/start.ml: Auth
