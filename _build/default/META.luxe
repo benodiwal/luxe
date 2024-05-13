@@ -1,6 +1,0 @@
-description = ""
-requires = "cohttp-async cohttp-lwt-unix dotenv leaves lwt minttea"
-archive(byte) = "luxe.cma"
-archive(native) = "luxe.cmxa"
-plugin(byte) = "luxe.cma"
-plugin(native) = "luxe.cmxs"
