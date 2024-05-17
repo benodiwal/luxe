@@ -21,5 +21,6 @@ let printWelcomeMessage () =
   |} *)
 
 module Start = struct
-  let start () = Auth.start ()
+  let start () = 
+    Auth.start ()
 end
