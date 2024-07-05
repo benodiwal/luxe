@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import cors from 'cors';
-import getEnvVar from '../env';
+import getEnvVar from '../env/index';
 
 class Server {
     #engine: Express;

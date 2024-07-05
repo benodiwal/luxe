@@ -1,5 +1,5 @@
-import Server from './server'
-import getEnvVar, { parseEnv } from './env';
+import Server from './server/index'
+import { parseEnv } from './env/index';
 
 parseEnv();
 
