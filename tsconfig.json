@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "rootDir": "./src",
-    "declaration": true,
-    "outDir": "./dist",
-    "verbatimModuleSyntax": true,
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleDetection": "force",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "baseUrl": "./src",
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "paths": {
+      "env/*": ["env/*"],
+    }
+  },
+  "ts-node": { "files": true, "require": ["tsconfig-paths/register"] },
+  "include": ["src/**/*"]
 }
