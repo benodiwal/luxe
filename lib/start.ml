@@ -1,4 +1,4 @@
-(* let printAsciiArt () =
+let printAsciiArt () =
   print_endline {|
  _                
 | |               
@@ -18,9 +18,10 @@ let printWelcomeMessage () =
   You can view live stream chats, upload videos, and more, all without leaving the comfort of your command line.
   
   To get started, log in with your Google account using OAuth:
-  |} *)
+  |}
 
 module Start = struct
-  let start () = 
-    Auth.start ()
+  let start () =
+    printAsciiArt ();
+    Auth.start ();
 end

@@ -1,4 +1,4 @@
 (library
  (name luxe)
  (public_name luxe)
- (libraries minttea leaves dotenv cohttp-async lwt cohttp-lwt-unix))
+ (libraries minttea leaves dotenv cohttp-async lwt cohttp-lwt-unix tls-lwt lwt_ssl))

@@ -4,7 +4,7 @@ let parseEnv key =
 
 let readEnv key =
   match parseEnv key with
-  | Some port -> port
+  | Some value -> value
   | None ->
     print_endline ("environment variable " ^ key ^ " not found");
     exit 1

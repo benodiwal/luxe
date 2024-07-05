@@ -22,9 +22,13 @@ let create_server port control =
     end;
     let html_body = Printf.sprintf "
     <html>
-        <head><title>Authorization Success</title></head>
+        <head>
+          <title>
+            Authorization Success
+          </title>
+        </head>
         <body>
-          <h1>You are authorized</h1>
+            <h1>You are authorized</h1>
         </body>
       </html>
     " in

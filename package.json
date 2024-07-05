@@ -1,0 +1,28 @@
+{
+  "name": "luxe_server",
+  "version": "1.0.0",
+  "description": "Server for luxe (A terminal client to upload videos on youtube directly from the terminal !!)",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benodiwal/luxe"
+  },
+  "bugs": {
+    "url": "https://github.com/benodiwal/luxe/issues",
+    "email": "sachinbeniwal0101@gmail.com"
+  },
+  "author": "benodiwal <sachinbeniwal0101@gmail.com>",
+  "keywords": [],
+  "license": "ISC",
+  "homepage": "https://github.com/benodiwal/luxe#readme",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

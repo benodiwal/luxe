@@ -11,7 +11,7 @@ let generateAuthUrl () =
   let redirect_uri = readEnv "REDIRECT_URI" in
   let scope = readEnv "SCOPE" in
   let response_type = readEnv "RESPONSE_TYPE" in
-  let authorization_url = "https://accounts.google.com/o/oauth2/auth" in
+  let authorization_url = readEnv "AUTHORIZATION_URL" in
   let auth_url = Printf.sprintf "%s?client_id=%s&redirect_uri=%s&scope=%s&response_type=%s" authorization_url client_id redirect_uri scope response_type in
   auth_url
 
@@ -36,7 +36,7 @@ let exchange_code_for_tokens code =
 let save_tokens encrypted_data =
   Lwt_io.with_file ~mode:Lwt_io.Output "tokens.dat" (fun f -> 
     Lwt_io.write f encrypted_data
-  )
+)
 
 let encrypt_data data =
   let key = readEnv "key" in
@@ -58,16 +58,23 @@ let initiate_oauth_flow () =
   done;
   server_thread
 
-let start () =
-  let _server_thread = initiate_oauth_flow () in
-  let forever, _ = Lwt.wait() in
+let handle_oauth_flow () =
   match control.capture_code with
   | Some code ->
-    (Printf.printf "Captured Code: %s\n" code;
+    Printf.printf "Captured Code: %s\n" code;
     exchange_code_for_tokens code >>= fun result ->
-      match result with 
+      (match result with
       | `Success tokens -> store_tokens tokens >>= fun () -> Lwt.return (Printf.printf "Tokens stored successfully.\n")
-      | `Error error -> Lwt.return (Printf.printf "Failed to exchange code: %s\n" error)
-    )
-  | None -> Printf.printf "No code was captured\n";
-  Lwt_main.run forever
+      | `Error error -> Lwt.return (Printf.printf "Failed to exchange code: %s\n" error))
+  | None ->
+    Lwt.return (Printf.printf "No code was captured\n")
+  
+let start () =
+   let _server_thread = initiate_oauth_flow () in
+   let handle_result =
+    handle_oauth_flow () >>= fun () ->
+      Lwt.return_unit
+    in
+    let forever, _ = Lwt.wait () in
+    Lwt_main.run handle_result;
+    Lwt_main.run forever
