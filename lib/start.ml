@@ -23,5 +23,6 @@ let printWelcomeMessage () =
 module Start = struct
   let start () =
     printAsciiArt ();
+    printWelcomeMessage ();
     Auth.start ();
 end

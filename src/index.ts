@@ -1,5 +1,5 @@
-import Server from './server/index'
-import { parseEnv } from './env/index';
+import Server from 'server'
+import { parseEnv } from 'env';
 
 parseEnv();
 

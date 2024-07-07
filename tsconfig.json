@@ -13,7 +13,8 @@
     "experimentalDecorators": true,
     "outDir": "./dist",
     "paths": {
-      "env/*": ["env/*"]
+      "env/*": ["env/*"],
+      "server/*": ["server/*"]
     }
   },
   "ts-node": { "files": true, "require": ["tsconfig-paths/register"] },
