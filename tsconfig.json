@@ -14,7 +14,11 @@
     "outDir": "./dist",
     "paths": {
       "env/*": ["env/*"],
-      "server/*": ["server/*"]
+      "server/*": ["server/*"],
+      "routers/*": ["routers/*"],
+      "controllers/*": ["controllers/*"],
+      "interfaces/*": ["interfaces/*"],
+      "validators/*": ["validators/*"]
     }
   },
   "ts-node": { "files": true, "require": ["tsconfig-paths/register"] },
