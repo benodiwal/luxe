@@ -4,7 +4,7 @@ import AbstractRouter from "./index.router";
 class AuthRouter extends AbstractRouter {
     registerRoutes(): void {
         const authController = new AuthController();
-        this.registerPOST('/google/callback', authController.googleAuthCallback());
+        this.registerGET('/google', authController.googleAuthCallback());
     }
 }
 

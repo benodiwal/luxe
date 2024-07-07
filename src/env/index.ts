@@ -3,6 +3,9 @@ import { config } from 'dotenv';
 
 const envSchema = z.object({
     PORT: z.string(),
+    CLIENT_ID: z.string(),
+    CLIENT_SECRET: z.string(),
+    REDIRECT_URI: z.string(),
 });
 
 export const parseEnv = (): void => {
