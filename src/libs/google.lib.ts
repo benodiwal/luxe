@@ -1,5 +1,7 @@
 import getEnvVar from 'env/index';
 import { OAuth2Client, TokenPayload, gaxios } from 'google-auth-library';
+import { parseEnv } from 'env';
+parseEnv();
 
 class GoogleOAuthClient {
   #client: OAuth2Client;
@@ -10,6 +12,10 @@ class GoogleOAuthClient {
       clientSecret: getEnvVar('CLIENT_SECRET'),
       redirectUri: getEnvVar('REDIRECT_URI'),
     });
+  }
+
+  generateAuthUrl(state: string) {
+    return this.#client.generateAuthUrl({ scope: ['profile', 'email'], state, access_type: 'offline' });
   }
 
   async getTokenAndVerifyFromCode(code: string): Promise<TokenPayload> {

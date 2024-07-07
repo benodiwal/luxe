@@ -5,6 +5,7 @@ import os from 'os';
 import { z } from 'zod';
 import path from 'path';
 import { InternalServerError } from "errors/internal-server-error";
+import googleOAuthClient from "libs/google.lib";
 
 class AuthController {
 
@@ -25,7 +26,8 @@ class AuthController {
             async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     const { code } = req.query as unknown as { code: string };
-                    this.writeConfigFile(code);
+                    const response = await googleOAuthClient.getTokenAndVerifyFromCode(code);
+                    this.writeConfigFile(JSON.stringify(response));
 
                     res.status(200).send(this.template());                   
                 } catch (e: unknown) {
