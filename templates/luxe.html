@@ -1,59 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple HTML template">
-    <title>Simple HTML Template</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        main {
-            padding: 2em;
-            background-color: white;
-            margin: 2em auto;
-            max-width: 800px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            margin: 1em 0;
-        }
-        nav a {
-            margin: 0 1em;
-            color: #333;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxe - Terminal-Based YouTube Client</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #EC6813;
+      color: #fff;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    main {
+      background-color: #fff;
+      padding: 20px 0;
+    }
+
+    .about, .features, .download {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: #eee;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #EC6813;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Main Content</h2>
-        <p>This is a simple HTML template. You can use it as a starting point for your own projects.</p>
-        <p>Feel free to customize it to fit your needs.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Website</p>
-    </footer>
+  <header>
+    <div class="container">
+      <h1>Luxe</h1>
+      <p>Your Ultimate Terminal-Based YouTube Client, Written in OCaml</p>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="about">
+        <h2>About Luxe</h2>
+        <p>
+          Luxe is a powerful and intuitive terminal-based YouTube client developed in OCaml. It provides a seamless way to browse, search, and play YouTube videos directly from your terminal. Designed for efficiency and speed, Luxe is perfect for users who prefer the command line interface.
+        </p>
+      </section>
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>Streamlined Command Line Interface</li>
+          <li>Search and Play YouTube Videos</li>
+          <li>Customizable Themes</li>
+          <li>High Performance and Lightweight</li>
+          <li>Developed in OCaml</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Luxe. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
