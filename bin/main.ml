@@ -47,5 +47,4 @@ let action command =
   | Version -> printVersion ()
   | Start -> Start.start ()
 
-let () =
-   parseArgs () |> action
+let () = parseArgs () |> action
