@@ -1,4 +1,5 @@
 (library
  (name luxe)
  (public_name luxe)
- (libraries minttea leaves dotenv cohttp-async lwt cohttp-lwt-unix tls-lwt lwt_ssl yojson core riot))
+ ; (libraries minttea spices leaves dotenv cohttp-async lwt cohttp-lwt-unix tls-lwt lwt_ssl yojson))
+ (libraries minttea spices leaves dotenv lwt cohttp-lwt-unix yojson))
