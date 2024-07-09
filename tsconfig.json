@@ -18,7 +18,8 @@
       "routers/*": ["routers/*"],
       "controllers/*": ["controllers/*"],
       "interfaces/*": ["interfaces/*"],
-      "validators/*": ["validators/*"]
+      "validators/*": ["validators/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "ts-node": { "files": true, "require": ["tsconfig-paths/register"] },
