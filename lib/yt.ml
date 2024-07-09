@@ -4,7 +4,8 @@ open Env
 
 let generateYtAuthUrl () =
   let scope = readEnv "SCOPE" in
-  generateUrl scope
+  let redirect_uri = readEnv "YT_REDIRECT_URI" in
+  generateUrl scope redirect_uri
 
 let rec check_file_continuously path interval file_found =
   Lwt_unix.file_exists path >>= fun exists ->

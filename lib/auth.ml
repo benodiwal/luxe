@@ -1,10 +1,12 @@
 open Lwt
 open Tui
 open Utils
+open Env
 
 let generateAuthUrl () = 
   let scope = "profile%20email%20openid" in
-  generateUrl scope
+  let redirect_uri = readEnv "REDIRECT_URI" in
+  generateUrl scope redirect_uri
 
 let log_name name =
   print_endline ("Hi! " ^ name);

@@ -2,9 +2,9 @@ open Env
 open Lwt
 open Yojson.Basic.Util
 
-let generateUrl scope =
+let generateUrl scope redirect_uri =
   let client_id = readEnv "CLIENT_ID" in
-  let redirect_uri = readEnv "REDIRECT_URI" in
+  let redirect_uri = redirect_uri in
   let scope = scope in
   let state = "random" in
   let response_type = readEnv "RESPONSE_TYPE" in

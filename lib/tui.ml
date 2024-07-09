@@ -1,4 +1,5 @@
 open Minttea
+open Yt
 
 type screen = 
   | MainMenu
@@ -71,16 +72,15 @@ Press Enter to select, q to quit.
       |} options
 
   | ConnectYouTube ->
-      {|
+     Printf.sprintf {|
 Connecting to YouTube...
 
 1. Open your web browser.
-2. Go to the authorization URL.
+2. Go to the authorization URL: %s
 3. Grant permissions to the app.
-4. Copy the provided code.
 
 Press q to return to the main menu.
-      |}
+      |} @@ generateYtAuthUrl ()
 
   | RevokeYouTube ->
       {|
