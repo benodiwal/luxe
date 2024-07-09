@@ -1,38 +1,16 @@
-open Env
 open Lwt
-open Yojson.Basic.Util
 open Tui
+open Utils
 
-let generateAuthUrl () =
-  let client_id = readEnv "CLIENT_ID" in
-  let redirect_uri = readEnv "REDIRECT_URI" in
+let generateAuthUrl () = 
   let scope = "profile%20email%20openid" in
-  let state = "random" in
-  let response_type = readEnv "RESPONSE_TYPE" in
-  let authorization_url = readEnv "AUTHORIZATION_URL" in
-  let access_type = readEnv "ACCESS_TYPE" in
-  let auth_url = Printf.sprintf "%s?client_id=%s&redirect_uri=%s&scope=%s&state=%s&response_type=%s&access_type=%s"
-  authorization_url client_id redirect_uri scope state response_type access_type in
-  auth_url
-
-let get_home_dir () =
-  try Sys.getenv "HOME"
-  with Not_found ->
-    Sys.getenv "USERPROFILE"
-
-let read_json_file path =
-  Lwt_io.with_file ~mode:Input path (fun channel ->
-    Lwt_io.read channel >>= fun content ->
-    let json = Yojson.Basic.from_string content in
-    let name = json |> member "name" |> to_string_option in
-    Lwt.return name
-  )
+  generateUrl scope
 
 let log_name name =
   print_endline ("Hi! " ^ name);
   Lwt.return_unit
 
-let initaite_random () =
+let initaite_yt_flow () =
   Minttea.start app ~initial_model
 
 let rec check_file_continuously path interval file_found =
@@ -42,7 +20,7 @@ let rec check_file_continuously path interval file_found =
     | Some name -> 
         log_name name >>= fun () ->
         file_found := true;
-        initaite_random ();
+        initaite_yt_flow();
         Lwt.return_unit
     | None -> 
         Lwt_io.printl "Name not found in the file." >>= fun () ->
@@ -69,7 +47,7 @@ let start () =
       read_json_file file_path >>= function
       | Some name ->
         log_name name >>= fun () ->
-        initaite_random ();
+        initaite_yt_flow ();
         Lwt.return_unit
       | None -> Lwt_io.printl "Name not found in the file."
     else
