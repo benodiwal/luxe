@@ -1,6 +1,7 @@
 open Env
 open Lwt
 open Yojson.Basic.Util
+open Tui
 
 let generateAuthUrl () =
   let client_id = readEnv "CLIENT_ID" in
@@ -28,7 +29,11 @@ let read_json_file path =
   )
 
 let log_name name =
-  Lwt_io.printlf "Hi! %s" name
+  print_endline ("Hi! " ^ name);
+  Lwt.return_unit
+
+let initaite_random () =
+  Minttea.start app ~initial_model
 
 let rec check_file_continuously path interval file_found =
   Lwt_unix.file_exists path >>= fun exists ->
@@ -37,6 +42,7 @@ let rec check_file_continuously path interval file_found =
     | Some name -> 
         log_name name >>= fun () ->
         file_found := true;
+        initaite_random ();
         Lwt.return_unit
     | None -> 
         Lwt_io.printl "Name not found in the file." >>= fun () ->
@@ -61,7 +67,10 @@ let start () =
     Lwt_unix.file_exists file_path >>= fun exists ->
     if exists then
       read_json_file file_path >>= function
-      | Some name -> log_name name
+      | Some name ->
+        log_name name >>= fun () ->
+        initaite_random ();
+        Lwt.return_unit
       | None -> Lwt_io.printl "Name not found in the file."
     else
       let background_check = check_file_continuously file_path 1.0 file_found in

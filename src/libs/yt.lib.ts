@@ -13,7 +13,7 @@ class Yt {
 
   constructor() {
     this.#SCOPES = [getEnvVar('SCOPE')];
-    this.#client = new OAuth2(getEnvVar('CLIENT_ID'), getEnvVar('CLIENT_SECRET'), getEnvVar('REDIRECT_URI'));
+    this.#client = new OAuth2(getEnvVar('CLIENT_ID'), getEnvVar('CLIENT_SECRET'), getEnvVar('YT_REDIRECT_URI'));
     this.#youtube = google.youtube({
       version: 'v3',
       auth: this.#client,

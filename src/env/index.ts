@@ -7,6 +7,7 @@ const envSchema = z.object({
     CLIENT_SECRET: z.string(),
     REDIRECT_URI: z.string(),
     SCOPE: z.string(),
+    YT_REDIRECT_URI: z.string(),
 });
 
 export const parseEnv = (): void => {
