@@ -1,76 +1,96 @@
 open Minttea
 
+type screen = 
+  | MainMenu
+  | ConnectYouTube
+  | RevokeYouTube
+
 type model = {
-   choices: (string * [`selected | `unselected]) list;
-   cursor: int;
+  choices: string list;
+  cursor: int;
+  current_screen: screen;
 }
 
 let initial_model = 
   {
-  cursor = 0;
-  choices = [
-     ("Connect to You Tube", `unselected);
-     ("Revoke YouTube Connection", `unselected);
-     ]
+    cursor = 0;
+    choices = [
+      "Connect to YouTube";
+      "Revoke YouTube Connection";
+    ];
+    current_screen = MainMenu;
   }
 
 let init _model = Command.Noop
 
 let update event model =
-  match event with
-  (* if we press `q` or the escape key, we exit *)
-  | Event.KeyDown (Key "q" | Escape) -> (model, Command.Quit)
-  (* if we press up or `k`, we move up in the list *)
-  | Event.KeyDown (Up | Key "k") ->
+  match model.current_screen, event with
+  | MainMenu, Event.KeyDown (Key "q" | Escape) -> (model, Command.Quit)
+  | _, Event.KeyDown (Key "q" | Escape) -> 
+      ({ model with current_screen = MainMenu }, Command.Noop)
+  | MainMenu, Event.KeyDown (Up | Key "k") ->
       let cursor =
         if model.cursor = 0 then List.length model.choices - 1
         else model.cursor - 1
       in
       ({ model with cursor }, Command.Noop)
-  (* if we press down or `j`, we move down in the list *)
-  | Event.KeyDown (Down | Key "j") ->
+  | MainMenu, Event.KeyDown (Down | Key "j") ->
       let cursor =
         if model.cursor = List.length model.choices - 1 then 0
         else model.cursor + 1
       in
       ({ model with cursor }, Command.Noop)
-  (* when we press enter or space we toggle the item in the list
-     that the cursor points to *)
-  | Event.KeyDown (Enter | Space) ->
-      let toggle status =
-        match status with `selected -> `unselected | `unselected -> `selected
+  | MainMenu, Event.KeyDown (Enter | Space) ->
+      let new_screen = 
+        match List.nth model.choices model.cursor with
+        | "Connect to YouTube" -> ConnectYouTube
+        | "Revoke YouTube Connection" -> RevokeYouTube
+        | _ -> MainMenu
       in
-      let choices =
-        List.mapi
-          (fun idx (name, status) ->
-            let status = if idx = model.cursor then toggle status else status in
-            (name, status))
-          model.choices
+      ({ model with current_screen = new_screen }, Command.Noop)
+  | _, _ -> (model, Command.Noop)
+
+let view model =
+  match model.current_screen with
+  | MainMenu ->
+      let options =
+        model.choices
+        |> List.mapi (fun idx name ->
+               let cursor = if model.cursor = idx then ">" else " " in
+               Format.sprintf "%s %s" cursor name)
+        |> String.concat "\n"
       in
-      ({ model with choices }, Command.Noop)
-  (* for all other events, we do nothing *)
-  | _ -> (model, Command.Noop)
+      Format.sprintf
+        {|
+YouTube Connection Options:
 
+%s
 
-  let view model =
-    (* we create our options by mapping over them *)
-    let options =
-      model.choices
-      |> List.mapi (fun idx (name, checked) ->
-             let cursor = if model.cursor = idx then ">" else " " in
-             let checked = if checked = `selected then "x" else " " in
-             Format.sprintf "%s [%s] %s" cursor checked name)
-      |> String.concat "\n"
-    in
-    (* and we send the UI for rendering! *)
-    Format.sprintf
+Press Enter to select, q to quit.
+
+      |} options
+
+  | ConnectYouTube ->
       {|
-  What should we buy at the market?
-  
-  %s
-  
-  Press q to quit.
-  
-    |} options
+Connecting to YouTube...
+
+1. Open your web browser.
+2. Go to the authorization URL.
+3. Grant permissions to the app.
+4. Copy the provided code.
+
+Press q to return to the main menu.
+      |}
+
+  | RevokeYouTube ->
+      {|
+Revoking YouTube Connection...
+
+1. Confirming your request.
+2. Removing stored credentials.
+3. Notifying YouTube about the revocation.
+
+Press q to return to the main menu.
+      |}
 
 let app = app ~init ~update ~view ()
