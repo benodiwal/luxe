@@ -6,6 +6,7 @@ const envSchema = z.object({
     CLIENT_ID: z.string(),
     CLIENT_SECRET: z.string(),
     REDIRECT_URI: z.string(),
+    SCOPE: z.string(),
 });
 
 export const parseEnv = (): void => {
