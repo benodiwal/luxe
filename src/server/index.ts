@@ -3,6 +3,7 @@ import cors from 'cors';
 import getEnvVar from '../env/index';
 import AuthRouter from 'routers/auth.router';
 import HealthRouter from 'routers/health.router';
+import YtRouter from 'routers/yt.router';
 
 class Server {
     #engine: Express;
@@ -19,9 +20,11 @@ class Server {
     #registerHandlers() {
         const healthRouter = new HealthRouter(this.#engine, '');
         const authRouter = new AuthRouter(this.#engine, '/auth');
+        const ytRouter = new YtRouter(this.#engine, '/yt');
 
         healthRouter.register();
         authRouter.register();
+        ytRouter.register();
     }
 
     start() {

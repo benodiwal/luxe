@@ -103,6 +103,25 @@ class Yt {
     }
   }
 
+  async getUserInfo(): Promise<youtube_v3.Schema$Channel | null> {
+    try {
+      const response = await this.#youtube.channels.list({
+        part: ['snippet', 'statistics'],
+        mine: true,
+      });
+
+      if (response.data.items && response.data.items.length > 0) {
+        return response.data.items[0];
+      } else {
+        console.log('No channel found for the authenticated user.');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching user info: ', error);
+      throw error;
+    }
+  }
+
   private isGoogleApiError(error: unknown): error is gaxios.GaxiosError {
     return (
       error instanceof gaxios.GaxiosError &&

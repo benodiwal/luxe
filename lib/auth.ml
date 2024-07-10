@@ -21,7 +21,7 @@ let rec check_file_continuously path interval file_found =
     read_json_file path >>= function
     | Some name -> 
         log_name name >>= fun () ->
-        file_found := true;
+         file_found := true;
         initaite_yt_flow();
         Lwt.return_unit
     | None -> 

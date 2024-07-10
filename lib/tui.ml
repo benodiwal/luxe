@@ -13,11 +13,13 @@ type model = {
 }
 
 let initial_model = 
+  let text = ref "" in
   {
     cursor = 0;
     choices = [
       "Connect to YouTube";
       "Revoke YouTube Connection";
+      !text;
     ];
     current_screen = MainMenu;
   }

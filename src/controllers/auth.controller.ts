@@ -33,6 +33,7 @@ class AuthController {
                 try {
                     const { code } = req.query as unknown as { code: string };
                     const tokens = await yt.getToken(code);
+                    console.log(tokens);
                     writeConfigFile(JSON.stringify(tokens), '.luxe.yt');
 
                     res.status(200).send(template('yt.html'));

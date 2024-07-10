@@ -12,3 +12,9 @@ export function writeConfigFile(data: string, fileName: string) {
     const configPath = path.join(homeDir, fileName);
     File.write(configPath, data);
 }
+
+export function readConfigFile(fileName: string): string {
+    const homeDir = os.homedir();
+    const configPath = path.join(homeDir, fileName);
+    return File.read(configPath);
+}
