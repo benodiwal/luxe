@@ -6,34 +6,34 @@ import HealthRouter from 'routers/health.router';
 import YtRouter from 'routers/yt.router';
 
 class Server {
-    #engine: Express;
-    
-    constructor() {
-        this.#engine = express();
-    }
+  #engine: Express;
 
-    #registerMiddlwares() {
-        this.#engine.use(express.json());
-        this.#engine.use(cors());
-    }
+  constructor() {
+    this.#engine = express();
+  }
 
-    #registerHandlers() {
-        const healthRouter = new HealthRouter(this.#engine, '');
-        const authRouter = new AuthRouter(this.#engine, '/auth');
-        const ytRouter = new YtRouter(this.#engine, '/yt');
+  #registerMiddlwares() {
+    this.#engine.use(express.json());
+    this.#engine.use(cors());
+  }
 
-        healthRouter.register();
-        authRouter.register();
-        ytRouter.register();
-    }
+  #registerHandlers() {
+    const healthRouter = new HealthRouter(this.#engine, '');
+    const authRouter = new AuthRouter(this.#engine, '/auth');
+    const ytRouter = new YtRouter(this.#engine, '/yt');
 
-    start() {
-        this.#registerMiddlwares();
-        this.#registerHandlers();
-        this.#engine.listen(parseInt(getEnvVar('PORT')), () => {
-            console.log(`\nServer listening on ${getEnvVar('PORT')}`);
-        });
-    }
+    healthRouter.register();
+    authRouter.register();
+    ytRouter.register();
+  }
+
+  start() {
+    this.#registerMiddlwares();
+    this.#registerHandlers();
+    this.#engine.listen(parseInt(getEnvVar('PORT')), () => {
+      console.log(`\nServer listening on ${getEnvVar('PORT')}`);
+    });
+  }
 }
 
 export default Server;
